@@ -9,7 +9,7 @@
     class App extends Component {
 
     state = {
-        text: "Привет" 
+        text: "Привет"
     };
 
     render() {
@@ -21,9 +21,9 @@
 
 [![Edit ll7mvrx3wl](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/ll7mvrx3wl)
 
-Изменить состояние можно с помощью функции **setState**. В эту функцию мы передаем объект с изменениями, которые мы хотим внести в state. 
+Изменить состояние можно с помощью функции **setState**. В эту функцию мы передаем объект с изменениями, которые мы хотим внести в state.
 
-## setState можно использовать двумя способами:
+## setState можно использовать двумя способами
 
 * Передать объект — this.setState({a: 1})
 * Передать функцию — this.setState(state => ({...state, a: 1}))
