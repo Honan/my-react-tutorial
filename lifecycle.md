@@ -9,6 +9,7 @@
 - **Инициализация**. Когда наш компонент впервые будет помещаться в виртуальный, а затем и реальный DOM. Для этого реакт вызовет ряд методов жизненного цикла.
   
   - **componentWillMount()**. Вызывается перед построением компоненты.
+    >componentWillMount() считается устаревшим и следует избегать в новом коде
   
   - **constructor(props)**. Конструктор обычно используется для инициализации state компоненты. Если вам не нужно инициализировать состояние от props, то лучше его не использовать.
   
@@ -18,7 +19,7 @@
   
     Возьмем пример из [документации](https://reactjs.org/docs/state-and-lifecycle.html) реакта, благодаря ```console.log``` можно посмотреть в какой очередности вызываются методы.
 
-    ```jsx
+    ```javascript
         class Clock extends Component {
             constructor(props) {
                 super(props);
@@ -53,10 +54,12 @@
 - **Обновление**. Обновление может происходить по двум причинам либо компонент изменил состояние, либо родитель.
 
   - **componentWillReceiveProps(nextProps)**. Передает новые prop, с которыми будет строится виртуальный DOM.
+  > componentWillReceiveProps(nextProps) считается устаревшим и следует избегать в новом коде
 
   - **shouldComponentUpdate(nextProps, nextState)**. Эта метод сообщает реакту, нужно ли вызывать функцию render для компоненты, когда у нее изменились её props или state. Функция должна вернуть булево значение.
 
   - **componentWillUpdate(nextProps, nextState)**. Предупреждает о том, что мы сейчас будет перестраивать виртуальный DOM для данного компонента. У нас уже есть готовые pops и state. Если props изменились, и shouldComponentUpdate возвращает false методы componentWillUpdate, render и compoentDidUpdate не будут вызваны.
+  > componentWillReceiveProps(nextProps) считается устаревшим и следует избегать в новом коде
 
   - **render()**
 
@@ -64,7 +67,7 @@
 
   В примере у нас есть два компонента Parent и Clock. Чтобы заглянуть в будущие мы должны нажать на кнопку, по нажатию родительский компонент в props передает будущие время. Для лучшего усвоения нужно поиграться с кодом :)
 
-  ```jsx
+  ```javascript
         class Parent extends Component {
             state = {
                 date: new Date()
@@ -126,11 +129,11 @@
             render() {
                 console.log("ОБЯЗАТЕЛЬНЫЙ метод render");
                 return (
-                <div>
-                    <h1>Hello, world!</h1>
-                    <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
-                    <button onClick={this.props.changeTime}>Заглянуть в будущие</button>
-                </div>
+                    <div>
+                        <h1>Hello, world!</h1>
+                        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+                        <button onClick={this.props.changeTime}>Заглянуть в будущие</button>
+                    </div>
                 );
             }
         }

@@ -6,7 +6,8 @@
 
 Самое простое объявление
 
-    class App extends Component {
+```javascript
+class App extends Component {
 
     state = {
         text: "Привет"
@@ -16,20 +17,22 @@
         return (
             <button>{this.state.text}</button>
         );
-        }
     }
+}
+```
 
-[![Edit ll7mvrx3wl](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/ll7mvrx3wl)
+[![Edit 9109060yp](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/9109060yp)
 
 Изменить состояние можно с помощью функции **setState**. В эту функцию мы передаем объект с изменениями, которые мы хотим внести в state.
 
 ## setState можно использовать двумя способами
 
-* Передать объект — this.setState({a: 1})
-* Передать функцию — this.setState(state => ({...state, a: 1}))
+* Передать объект — ```this.setState({a: 1})```
+* Передать функцию — ```this.setState(state => ({...state, a: 1}))```
 
 Первым способом при клике по кнопке в setState мы передаем объект. Вызывается функция render перерисовывает элемент.
 
+```javascript
     class App extends Component {
             state = {
             text: "Привет"
@@ -45,8 +48,9 @@
             return <button onClick={this.changeState}>{this.state.text}</button>;
             }
     }
+```
 
-[![Edit ll7mvrx3wl](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/ll7mvrx3wl)
+[![Edit 623v6r0qrn](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/623v6r0qrn)
 
 Но если нам нужно поменять состояние, зависящее от предыдущего, то мы должны передавать функцию. Т.к. state может обновляться асинхронно. Мы должны точно знать в каком состоянии находится компонент.
 
