@@ -9,3 +9,4 @@
 * [Context](context.md)
 * [Ref](ref.md)
 * [Portals](portals.md)
+* [HOC](hoc.md)
