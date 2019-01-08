@@ -14,3 +14,4 @@
 * [RenderProps](render-props.md)
 * Роутинг
   * [Simple routing](simple-routing.md)
+  * [Switch routing](switch-routing.md)
