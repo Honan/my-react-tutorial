@@ -10,6 +10,7 @@
 * [Ref](ref.md)
 * [Portals](portals.md)
 * [HOC](hoc.md)
+  * [Recompose](recompose.md)
 * [RenderProps](render-props.md)
 * Роутинг
   * [Simple routing](simple-routing.md)
