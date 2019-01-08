@@ -16,3 +16,4 @@
   * [Simple routing](simple-routing.md)
   * [Switch routing](switch-routing.md)
   * [Nested routing](nested-routing.md)
+  * [Private routing](private-routing.md)
