@@ -16,6 +16,7 @@ Context позволяет пробрасывать объекты, функци
 Консъюмер предоставляет данные с помощью renderProps, только в случае компоненты Consumer используется рендер функция, передачу которой компонент ожидает в children.
 
 ```javascript
+
 const {
   Consumer: ThemeConsumer,
   Provider: ThemeProvider
@@ -26,9 +27,11 @@ const Button = () => (
         {({ theme, toggleTheme }) => (
             <button
                 onClick={toggleTheme}
-                style={{
-                    backgroundColor: theme === "light" ? "#666" : "#eee"
-                }}
+                style={
+                    {
+                         backgroundColor: theme === "light" ? "#666" : "#eee"
+                    }
+                }
             >
             Кнопка с темой
             </button>
@@ -50,12 +53,17 @@ class ContextApiProviderExample extends Component {
     render() {
         const { theme } = this.state;
         return (
-            <ThemeProvider value={{ theme, toggleTheme: this.toggleTheme }}>
+            <ThemeProvider value={
+                {
+                    theme, toggleTheme: this.toggleTheme
+                }
+            }>
                 <Button />
             </ThemeProvider>
         );
     }
 }
+
 ```
 
 P.S Есть различные паттерны, для удобной работы с контекстом.

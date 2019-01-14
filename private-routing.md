@@ -21,11 +21,13 @@ export class PrivateExample extends Component {
     const { isAuthorized } = this.state;
     return (
       <AuthProvider
-        value={{
-          isAuthorized,
-          authorize: this.authorize,
-          loginPath: this.loginPath
-        }}
+        value={
+          {
+            isAuthorized,
+            authorize: this.authorize,
+            loginPath: this.loginPath
+          }
+        }
       >
         <Link to="/public">Public</Link> <Link to="/private">Private</Link>{" "}
         <Link to="/login">Login</Link>
@@ -83,4 +85,5 @@ let PrivateRoute = ({
 
 PrivateRoute = withAuth(PrivateRoute);
 ```
+
 [![Edit 6w3xjp6v1r](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/6w3xjp6v1r)
