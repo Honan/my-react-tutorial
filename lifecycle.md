@@ -9,6 +9,7 @@
 - **Инициализация**. Когда наш компонент впервые будет помещаться в виртуальный, а затем и реальный DOM. Для этого реакт вызовет ряд методов жизненного цикла.
   
   - **componentWillMount()**. Вызывается перед построением компоненты.
+  
     >componentWillMount() считается устаревшим и следует избегать в новом коде
   
   - **constructor(props)**. Конструктор обычно используется для инициализации state компоненты. Если вам не нужно инициализировать состояние от props, то лучше его не использовать.
@@ -59,6 +60,7 @@
   - **shouldComponentUpdate(nextProps, nextState)**. Эта метод сообщает реакту, нужно ли вызывать функцию render для компоненты, когда у нее изменились её props или state. Функция должна вернуть булево значение.
 
   - **componentWillUpdate(nextProps, nextState)**. Предупреждает о том, что мы сейчас будет перестраивать виртуальный DOM для данного компонента. У нас уже есть готовые pops и state. Если props изменились, и shouldComponentUpdate возвращает false методы componentWillUpdate, render и compoentDidUpdate не будут вызваны.
+  
   > componentWillReceiveProps(nextProps) считается устаревшим и следует избегать в новом коде
 
   - **render()**
@@ -67,79 +69,79 @@
 
   В примере у нас есть два компонента Parent и Clock. Чтобы заглянуть в будущие мы должны нажать на кнопку, по нажатию родительский компонент в props передает будущие время. Для лучшего усвоения нужно поиграться с кодом :)
 
-  ```javascript
-        class Parent extends Component {
-            state = {
+    ```javascript
+    class Parent extends Component {
+        state = {
+            date: new Date()
+        };
+
+        changeTime = () => {
+            this.setState(({ date }) => {
+                date.setHours(date.getHours() + 1); // Прибавляем один час
+                return {
+                    date: date
+                };
+            });
+        };
+
+        render() {
+            return <Clock date={this.state.date} changeTime={this.changeTime} />;
+        }
+    }
+
+    class Clock extends Component {
+        // Методы инициализации
+        constructor(props) {
+            super(props);
+            this.state = {
                 date: new Date()
             };
-
-            changeTime = () => {
-                this.setState(({ date }) => {
-                    date.setHours(date.getHours() + 1); // Прибавляем один час
-                    return {
-                        date: date
-                    };
-                });
-            };
-
-            render() {
-                return <Clock date={this.state.date} changeTime={this.changeTime} />;
-            }
+            console.log("вызов конструктора");
         }
 
-        class Clock extends Component {
-            // Методы инициализации
-            constructor(props) {
-                super(props);
-                this.state = {
-                    date: new Date()
-                };
-                console.log("вызов конструктора");
-            }
-
-            componentWillUnmount() {
-                console.log("componentWillUnmount");
-            }
-
-            componentDidMount() {
-                console.log("componentDidMount");
-            }
-
-            componentWillReceiveProps(nextProps) {
-                console.log("componentWillReceiveProps");
-                this.setState({
-                    date: nextProps.date
-                });
-            }
-
-            // Методы обновления
-            shouldComponentUpdate(nextProps, nextState) {
-                console.log("shouldComponentUpdate");
-                return true; // вызываем render
-            }
-
-            componentWillUpdate(nextProps, nextState) {
-                console.log("componentWillUpdate");
-            }
-
-            componentDidUpdate(prevProps, prevState) {
-                console.log("componentDidUpdate");
-            }
-
-            render() {
-                console.log("ОБЯЗАТЕЛЬНЫЙ метод render");
-                return (
-                    <div>
-                        <h1>Hello, world!</h1>
-                        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
-                        <button onClick={this.props.changeTime}>Заглянуть в будущие</button>
-                    </div>
-                );
-            }
+        componentWillUnmount() {
+            console.log("componentWillUnmount");
         }
+
+        componentDidMount() {
+            console.log("componentDidMount");
+        }
+
+        componentWillReceiveProps(nextProps) {
+            console.log("componentWillReceiveProps");
+            this.setState({
+                date: nextProps.date
+            });
+        }
+
+        // Методы обновления
+        shouldComponentUpdate(nextProps, nextState) {
+            console.log("shouldComponentUpdate");
+            return true; // вызываем render
+        }
+
+        componentWillUpdate(nextProps, nextState) {
+            console.log("componentWillUpdate");
+        }
+
+        componentDidUpdate(prevProps, prevState) {
+            console.log("componentDidUpdate");
+        }
+
+        render() {
+            console.log("ОБЯЗАТЕЛЬНЫЙ метод render");
+            return (
+                <div>
+                    <h1>Hello, world!</h1>
+                    <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+                    <button onClick={this.props.changeTime}>Заглянуть в будущие</button>
+                </div>
+            );
+        }
+    }
     ```
 
-    [![Edit mzlp9rz3zy](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/mzlp9rz3zy?expanddevtools=1)
+[![Edit mzlp9rz3zy](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/mzlp9rz3zy?expanddevtools=1)
 
 - **Удаление**
   - **componentWillUnmount()**. Единственный метод, который вызывается перед удалением. В этом методе отключают eventListener, если они есть и отменяют сетевые запросы.
