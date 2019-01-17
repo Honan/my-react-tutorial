@@ -55,13 +55,15 @@
 - **Обновление**. Обновление может происходить по двум причинам либо компонент изменил состояние, либо родитель.
 
   - **componentWillReceiveProps(nextProps)**. Передает новые prop, с которыми будет строится виртуальный DOM.
-  > componentWillReceiveProps(nextProps) считается устаревшим и следует избегать в новом коде
+  > componentWillReceiveProps(nextProps) считается устаревшим и следует избегать в новом коде. Альтернативой является **static getDerivedStateFromProps(nextProps, prevState)**.
+
+  - **static getDerivedStateFromProps(nextProps, prevState)**. Это статический метод. Поэтому у нас нет доступа к конкретному экземпляру класса. Нет доступа к `this.props` ни к `this.state` ни к каким-либо методам класса. Функция getDerivedStateFromProps должна возвращать новое состояние или `null`. Пример его работы можно посмотреть [здесь](https://youtu.be/XqFCMObsyKk).
 
   - **shouldComponentUpdate(nextProps, nextState)**. Эта метод сообщает реакту, нужно ли вызывать функцию render для компоненты, когда у нее изменились её props или state. Функция должна вернуть булево значение.
 
   - **componentWillUpdate(nextProps, nextState)**. Предупреждает о том, что мы сейчас будет перестраивать виртуальный DOM для данного компонента. У нас уже есть готовые pops и state. Если props изменились, и shouldComponentUpdate возвращает false методы componentWillUpdate, render и compoentDidUpdate не будут вызваны.
   
-  > componentWillReceiveProps(nextProps) считается устаревшим и следует избегать в новом коде
+  > componentWillUpdate(nextProps, nextState) считается устаревшим и следует избегать в новом коде
 
   - **render()**
 
