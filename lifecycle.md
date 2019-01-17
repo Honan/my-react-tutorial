@@ -55,6 +55,7 @@
 - **Обновление**. Обновление может происходить по двум причинам либо компонент изменил состояние, либо родитель.
 
   - **componentWillReceiveProps(nextProps)**. Передает новые prop, с которыми будет строится виртуальный DOM.
+  
   > componentWillReceiveProps(nextProps) считается устаревшим и следует избегать в новом коде. Альтернативой является **static getDerivedStateFromProps(nextProps, prevState)**.
 
   - **static getDerivedStateFromProps(nextProps, prevState)**. Это статический метод. Поэтому у нас нет доступа к конкретному экземпляру класса. Нет доступа к `this.props` ни к `this.state` ни к каким-либо методам класса. Функция getDerivedStateFromProps должна возвращать новое состояние или `null`. Пример его работы можно посмотреть [здесь](https://youtu.be/XqFCMObsyKk).
