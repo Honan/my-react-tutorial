@@ -16,7 +16,6 @@ Context позволяет пробрасывать объекты, функци
 Консъюмер предоставляет данные с помощью renderProps, только в случае компоненты Consumer используется рендер функция, передачу которой компонент ожидает в children.
 
 ```javascript
-
 const {
   Consumer: ThemeConsumer,
   Provider: ThemeProvider
@@ -63,7 +62,8 @@ class ContextApiProviderExample extends Component {
         );
     }
 }
-
 ```
+
+[![Edit Context](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/0xpjo680wp)
 
 P.S Есть различные паттерны, для удобной работы с контекстом.
