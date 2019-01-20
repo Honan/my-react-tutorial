@@ -57,7 +57,7 @@ class LoaderHOCExample extends Component {
 ```
 [![Edit zqww4kzjp](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/zqww4kzjp)
 
-Мы ожидаем данные, но через какое время они придут мы не знаем. Поэтому лучше показать пользователю сообщение о загрузки данных. Т.к. сообщение о подгрузки данных может понадобиться не только для одного компонента. Воспользуемся HOC, с его помощью мы обернем наш компонент. Во время загрузки данных мы будем показывать соответствующие сообщение, а когда они доступны мы их покажем.
+Мы ожидаем данные, но через какое время они придут мы не знаем. Поэтому лучше показать пользователю сообщение о загрузки. Т.к. такое сообщение может понадобиться не только для одного компонента. Воспользуемся HOC, с его помощью мы обернем наш компонент. Во время загрузки данных мы будем показывать соответствующие сообщение, а когда данные подгрузяться мы их покажем.
 
 Создаем функцию `loaderHOC()` из нее мы будет возвращать компонент обертку. Который будет рендерерить сообщение о загрузке либо обернутый компонент. И не забываем передать все `props` нашему оборачиваемого компоненту для этого мы используем  `{...this.props}`.
 
@@ -138,7 +138,7 @@ class Stateless extends Component {
     render() {
         const { email } = this.props;
         console.log("Component render");
-        return <p>I'm simple Stateless component. {email}</p>;
+        return <p>I am simple Stateless component. {email}</p>;
     }
 }
 
@@ -171,7 +171,7 @@ class Stateless extends Component {
     render(){
         const {email} = this.props;
         console.log('Component render');
-        return <p>I'm simple Stateless component. {email}</p>
+        return <p>I am simple Stateless component. {email}</p>
     }
 }
 
