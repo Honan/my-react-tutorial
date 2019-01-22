@@ -46,6 +46,14 @@ const reducer = (state = { name: "Denis" }, action) => {
 };
 ```
 
+У store есть метод `subscribe`, который позволяет подписаться на его обновления. В `subscribe` мы передаем функцию, которая будет вызываться каждый раз, когда store будет получать action.
+
+```javascript
+store.subscribe(() => {
+  console.log(store.getState());
+});
+```
+
 Давайте соберем все по кусочкам и посмотрим на полноценный код. Сначала у нас в state хранилось имя Denis, а затем мы с помощью action изменили на пустую строчку.
 
 ```javascript
