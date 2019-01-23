@@ -19,3 +19,5 @@
   * [Private routing](private-routing.md)
 * Redux
   * [Store](store.md)
+  * [Action](action.md)
+  * [Reducers](reducers.md)
