@@ -17,7 +17,8 @@
   * [Switch routing](switch-routing.md)
   * [Nested routing](nested-routing.md)
   * [Private routing](private-routing.md)
-* Redux
+* [Redux](redux.md)
   * [Store](store.md)
   * [Action](action.md)
   * [Reducers](reducers.md)
+  * [React-redux](react-redux.md)
