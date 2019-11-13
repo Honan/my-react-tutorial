@@ -8,11 +8,13 @@
 
 - **Инициализация**. Когда наш компонент впервые будет помещаться в виртуальный, а затем и реальный DOM. Для этого реакт вызовет ряд методов жизненного цикла.
   
-  - **componentWillMount()**. Вызывается перед построением компоненты.
+  - ~~**componentWillMount()**~~. Вызывается перед построением компоненты.
   
     >componentWillMount() считается устаревшим и следует избегать в новом коде
   
-  - **constructor(props)**. Конструктор обычно используется для инициализации state компоненты. Если вам не нужно инициализировать состояние от props, то лучше его не использовать.
+  - **constructor(props)**. Конструктор обычно используется для инициализации state компоненты. Если вам не нужно инициализировать состояние от props, (или привязать хендлеры к обработчикам событий) то лучше его не использовать.
+
+  - **static getDerivedStateFromProps(nextProps, prevState)**. Это статический метод. Поэтому у нас нет доступа к конкретному экземпляру класса. Нет доступа к `this.props` ни к `this.state` ни к каким-либо методам класса. Функция getDerivedStateFromProps должна возвращать новое состояние или `null`. Пример его работы можно посмотреть [здесь](https://youtu.be/XqFCMObsyKk).
   
   - **render()** функция является **обязательной**, которая должна возвращать ```null```, ```string```, портал, ```boolean``` или ```jsx```. Если возвращается ```boolean``` значение или ```null```, то компонент не будет отрендерен. Он не должен содержать setState, запросов к серверу, его главная задачей построить виртуальный DOM.
   
@@ -28,10 +30,6 @@
                     date: new Date()
                 };
                 console.log("конструктор");
-            }
-
-            componentWillUnmount() {
-                console.log("componentWillUnmount");
             }
 
             componentDidMount() {
@@ -54,15 +52,15 @@
 
 - **Обновление**. Обновление может происходить по двум причинам либо компонент изменил состояние, либо родитель.
 
-  - **componentWillReceiveProps(nextProps)**. Передает новые prop, с которыми будет строится виртуальный DOM.
+  - ~~**componentWillReceiveProps(nextProps)**~~. Передает новые prop, с которыми будет строится виртуальный DOM.
   
   > componentWillReceiveProps(nextProps) считается устаревшим и следует избегать в новом коде. Альтернативой является **static getDerivedStateFromProps(nextProps, prevState)**.
 
-  - **static getDerivedStateFromProps(nextProps, prevState)**. Это статический метод. Поэтому у нас нет доступа к конкретному экземпляру класса. Нет доступа к `this.props` ни к `this.state` ни к каким-либо методам класса. Функция getDerivedStateFromProps должна возвращать новое состояние или `null`. Пример его работы можно посмотреть [здесь](https://youtu.be/XqFCMObsyKk).
+  - **static getDerivedStateFromProps(nextProps, prevState)**
 
   - **shouldComponentUpdate(nextProps, nextState)**. Эта метод сообщает реакту, нужно ли вызывать функцию render для компоненты, когда у нее изменились её props или state. Функция должна вернуть булево значение.
 
-  - **componentWillUpdate(nextProps, nextState)**. Предупреждает о том, что мы сейчас будет перестраивать виртуальный DOM для данного компонента. У нас уже есть готовые pops и state. Если props изменились, и shouldComponentUpdate возвращает false методы componentWillUpdate, render и compoentDidUpdate не будут вызваны.
+  - ~~**componentWillUpdate(nextProps, nextState)**~~. Предупреждает о том, что мы сейчас будет перестраивать виртуальный DOM для данного компонента. У нас уже есть готовые pops и state. Если props изменились, и shouldComponentUpdate возвращает false методы componentWillUpdate, render и compoentDidUpdate не будут вызваны.
   
   > componentWillUpdate(nextProps, nextState) считается устаревшим и следует избегать в новом коде
 
